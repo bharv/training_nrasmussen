@@ -1,0 +1,73 @@
+---
+title: "Intro to Markdown"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*test run of RMarkdown*
+
+list
+
+* one
+* two 
+* three
+
+# Header
+
+## Subheader
+
+### Subsubheader
+
+```{r}
+(fish <- 7*8)
+```
+
+
+
+```{r}
+library(readr)
+```
+
+## Introduction
+
+```{r, message=F, echo=F}
+bg_chem <-read_csv("BGchem2008data.csv")
+head(bg_chem)
+```
+
+## Analysis
+
+* summary stats
+
+```{r}
+nitrate<-mean(bg_chem$NO3)
+nitrite<-mean(bg_chem$NO2)
+amm<-mean(bg_chem$NH4)
+phos<-mean(bg_chem$P)
+
+
+```
+
+* mean ratio
+
+```{r}
+red <- (nitrate + nitrite + amm)/phos
+
+```
+
+We calculated the Redfield ratio to be `r round(red,2)`.
+
+* plot
+
+```{r, echo=F}
+plot(bg_chem$P,bg_chem$NO2+bg_chem$NH4+bg_chem$NO3)
+```
+
+
+
+
+
+
